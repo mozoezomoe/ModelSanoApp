@@ -75,6 +75,42 @@ def showData():
     elif selected_model == 'rf_met':
         with open('models/rf_met_plasmAnt.pkl', 'rb') as f:
             model = pickle.load(f)
+    elif selected_model == 'mlp_full_plasmFlav':
+        with open('models/mlp_full_plasmFlav.pkl', 'rb') as f:
+            model = pickle.load(f)
+    elif selected_model == 'mlp_met_plasmFlav':
+        with open('models/mlp_met_plasmFlav.pkl', 'rb') as f:
+            model = pickle.load(f)
+    elif selected_model == 'rf_full_plasmFlav':
+        with open('models/rf_full_plasmFlav.pkl', 'rb') as f:
+            model = pickle.load(f)
+    elif selected_model == 'rf_met_plasmFlav':
+        with open('models/rf_met_plasmFlav.pkl', 'rb') as f:
+            model = pickle.load(f)
+    if selected_model == 'mlp_full_urineAnt':
+        with open('models/mlp_full_urineAnt.pkl', 'rb') as f:
+            model = pickle.load(f)
+    elif selected_model == 'mlp_met_urineAnt':
+        with open('models/mlp_met_urineAnt.pkl', 'rb') as f:
+            model = pickle.load(f)
+    elif selected_model == 'rf_full_urineAnt':
+        with open('models/rf_full_urineAnt.pkl', 'rb') as f:
+            model = pickle.load(f)
+    elif selected_model == 'rf_met_urineAnt':
+        with open('models/rf_met_urineAnt.pkl', 'rb') as f:
+            model = pickle.load(f)                
+    elif selected_model == 'mlp_full_urineFlav':
+        with open('models/mlp_full_urineFlav.pkl', 'rb') as f:
+            model = pickle.load(f)
+    elif selected_model == 'mlp_met_urineFlav':
+        with open('models/mlp_met_urineFlav.pkl', 'rb') as f:
+            model = pickle.load(f)
+    elif selected_model == 'rf_full_urineFlav':
+        with open('models/rf_full_urineFlav.pkl', 'rb') as f:
+            model = pickle.load(f)
+    elif selected_model == 'rf_met_urineFlav':
+        with open('models/rf_met_urineFlav.pkl', 'rb') as f:
+            model = pickle.load(f)    
     else:
         return 'Error: Invalid model selection'
 
