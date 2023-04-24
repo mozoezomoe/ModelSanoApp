@@ -1,17 +1,16 @@
 {
     "version": 2,
+    "builds": [
+        {
+            "src": "*.py",
+            "use": "@vercel/python"
+        }
+    ],
     "routes": [
         {
             "src": "(.*)",
             "dest": "app.py"
         }
-    ],
+    ]
     
-    "functions": 
-        {
-        "pages/api/app.py": {
-            "excludeFiles": "**/*.html"
-          }
-        }
-      
   }
