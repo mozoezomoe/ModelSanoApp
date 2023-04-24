@@ -5,23 +5,70 @@
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
 </head>
 <body>
-    <h1>Upload CSV File</h1>
+    <div class="header">
+        <img src="../static/modelSanoLogo.png" alt="logo">
+        <h1>Model Sano App: Upload a CSV File with corresponding metabolites</h1>
+    </div>
     <form method="POST" enctype="multipart/form-data" action="/predict">
-        <label for="model-select">Select a model (antPlasm by now):</label>
-        <select name="model" id="model-select">
-            <option value="mlp_full">mlp full</option>
-            <option value="mlp_met">mlp met</option>
-            <option value="rf_full">rf full</option>
-            <option value="rf_met">rf met</option>
-        </select>
+        <label for="model-select">Select a model to predict metabolites:</label>
+        
+        <div class="model-select">
+            <label for="model-select">Select source of samples:</label>
+            <select id="model-select" onchange="toggleModelOptions()">
+                <option value="model-list-1">Plasm models</option>
+                <option value="model-list-2">Urine models</option>
+            </select>
+        </div>
+        
+        <div id="model-list-1">
+            <label for="model1">Select algorithm and source data:</label>
+            <select id="model1" name="model">
+                <option value='mlp_full_plasm_ant'>mlp_full_plasm_ant</option>
+                <option value="mlp_met_plasm_ant">mlp met plasm ant</option>
+                <option value="rf_full_plasm_ant">rf full plasm ant</option>
+                <option value="rf_met_plasm_ant">rf met plasm ant</option>
+                <option value="mlp_full_plasm_flav">mlp full plasm flav</option>
+                <option value="mlp_met_plasm_flav">mlp met plasm flav</option>
+                <option value="rf_full_plasm_flav">rf full plasm flav</option>
+                <option value="rf_met_plasm_flav">rf met plasm flav</option>
+            </select>
+        </div>
+        
+        <div id="model-list-2" style="display: none;">
+            <label for="model2">Select algorithm and source data:</label>
+            <select id="model2" name="model">
+                <option value="mlp_full_urine_ant">mlp full urine ant</option>
+                <option value="mlp_met_urine_ant">mlp met urine ant</option>
+                <option value="rf_full_urine_ant">rf full urine ant</option>
+                <option value="rf_met_urine_ant">rf met urine ant</option>
+                <option value="mlp_full_urine_flav">mlp full urine flav</option>
+                <option value="mlp_met_urine_flav">mlp met urine flav</option>
+                <option value="rf_full_urine_flav">rf full urine flav</option>
+                <option value="rf_met_urine_flav">rf met urine flav</option>
+            </select>
+        </div>
         <br>
         <input type="file" name="file">
         <input type="submit" value="Submit">
     </form>
 
-    <h2>Download Predictions</h2>
+    <h2>Download metaboiltes/anthropometics measures predictions</h2>
     <a id="download-link" href="" download>Download CSV</a>
 
     <script src="../static/js/script.js"></script>
+    <script>
+        function toggleModelOptions() {
+            var select = document.getElementById('model-select');
+            var modelList1 = document.getElementById('model-list-1');
+            var modelList2 = document.getElementById('model-list-2');
+            if (select.value === 'model-list-1') {
+                modelList1.style.display = 'block';
+                modelList2.style.display = 'none';
+            } else {
+                modelList1.style.display = 'none';
+                modelList2.style.display = 'block';
+            }
+        }
+    </script>
 </body>
 </html>

@@ -1,41 +1,100 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
     margin: 0;
     padding: 0;
 }
 
-h1, h2 {
-    margin: 1em 0;
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 800px;
 }
+
+.header img {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+}
+
+.header h1 {
+    position: absolute;
+    margin: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.container h2 {
+    position: absolute;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+
 
 form {
-    margin: 1em 0;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    height: 200px;
 }
 
-input[type=file] {
-    display: block;
-    margin: 1em 0;
-}
-
-input[type=submit] {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+form select {
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
     font-size: 16px;
-    margin: 1em 0;
+}
+
+form input[type="file"] {
+    margin-right: 10px;
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f2f2f2;
+    font-size: 16px;
+}
+
+form button[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 16px;
     cursor: pointer;
-    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-input[type=submit]:hover {
-    background-color: #3e8e41;
+form button[type="submit"]:hover {
+    background-color: #2E8B57;
 }
 
-#download-link {
-    display: none;
-    margin: 1em 0;
+.model-select {
+    margin-bottom: 20px;
 }
+
+.model-select label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
