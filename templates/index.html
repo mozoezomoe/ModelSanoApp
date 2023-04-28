@@ -50,10 +50,11 @@
         </div>
         <br>
         <input type="file" name="file">
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit manual selection of model">
+        <input type="submit" value="Submit automatic selection of model">
     </form>
 
-    <h2>Download metaboiltes/anthropometics measures predictions</h2>
+    <h2>Download metaboLites/anthropometics measures predictions</h2>
     <a id="download-link" href="" download>Download CSV</a>
 
     <script src="../static/js/script.js"></script>
@@ -71,5 +72,61 @@
             }
         }
     </script>
+
+    <script>
+        function showHyperparametersForm() {
+            var modelSelection = document.getElementById("model-selection");
+            var selectedModel = modelSelection.options[modelSelection.selectedIndex].value;
+            var mlpForm = document.getElementById("mlp-hyperparameters");
+            var rfForm = document.getElementById("rf-hyperparameters");
+
+            if (selectedModel === "mlp") {
+                mlpForm.style.display = "block";
+                rfForm.style.display = "none";
+            } else if (selectedModel === "rf") {
+                mlpForm.style.display = "none";
+                rfForm.style.display = "block";
+            }
+            else if (selectedModel === "none") {
+                mlpForm.style.display = "none";
+                rfForm.style.display = "none";
+            }
+        }
+    </script>
+
+    <div class="model-select-container">
+        <label for="model-select">Choose a model:</label>
+        <select id="model-select" name="model-select" onchange=showHyperparamsForm()>
+            <option value="none">None</option>
+            <option value="MLP">MLP</option>
+            <option value="RF">Random Forest</option>
+        </select>
+    </div>
+
+    <div class="hyperparameters-container">
+        <div id="mlp-hyperparams" class="mlp-hyperparams">
+            <label for="learning-rate">Learning Rate:</label>
+            <input type="number" id="learning-rate" name="learning-rate" step="0.01" value="0.001"><br>
+
+            <label for="num-epochs">Number of Epochs:</label>
+            <input type="number" id="num-epochs" name="num-epochs" value="10"><br>
+
+            <label for="batch-size">Batch Size:</label>
+            <input type="number" id="batch-size" name="batch-size" value="32"><br>
+        </div>
+
+        <div id="rf-hyperparams" class="rf-hyperparams">
+            <label for="n-estimators">Number of Estimators:</label>
+            <input type="number" id="n-estimators" name="n-estimators" value="100"><br>
+
+            <label for="max-depth">Max Depth:</label>
+            <input type="number" id="max-depth" name="max-depth" value="5"><br>
+
+            <label for="min-samples-split">Min Samples Split:</label>
+            <input type="number" id="min-samples-split" name="min-samples-split" value="2"><br>
+        </div>
+    </div>    
+    
+
 </body>
 </html>

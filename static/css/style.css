@@ -43,8 +43,6 @@ body {
     font-size: 24px;
 }
 
-
-
 form {
     position: absolute;
     display: flex;
@@ -97,3 +95,52 @@ form button[type="submit"]:hover {
     font-weight: bold;
 }
 
+.retrain-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .retrain-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .retrain-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    padding: 20px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    width: 300px;
+  }
+  
+  .retrain-form label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .retrain-form input {
+    width: 100%;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  
+  .retrain-submit {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }

@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 import io
 import csv
-import sklearn
+from train_model import train_model
 
 app = Flask(__name__)
 
@@ -20,61 +20,77 @@ def predict():
     file = request.files['file']
 
     # Load the model
-    if selected_model == 'mlp_full_plasm_ant':
-        with open('models/mlp_full_plasmAnt.pkl', 'rb') as f:
-            model = pickle.load(f)
-    elif selected_model == 'mlp_met_plasm_ant':
-        with open('models/mlp_met_plasmAnt.pkl', 'rb') as f:
-            model = pickle.load(f)
-    elif selected_model == 'rf_full_plasm_ant':
-        with open('models/rf_full_plasmAnt.pkl', 'rb') as f:
-            model = pickle.load(f)
-    elif selected_model == 'rf_met_plasm_ant':
-        with open('models/rf_met_plasmAnt.pkl', 'rb') as f:
-            model = pickle.load(f)
-    elif selected_model == 'mlp_full_plasm_flav':
-        with open('models/mlp_full_plasmFlav.pkl', 'rb') as f:
-            model = pickle.load(f)
-    elif selected_model == 'mlp_met_plasm_flav':
-        with open('models/mlp_met_plasmFlav.pkl', 'rb') as f:
-            model = pickle.load(f)
-    elif selected_model == 'rf_full_plasm_flav':
-        with open('models/rf_full_plasmFlav.pkl', 'rb') as f:
-            model = pickle.load(f)
-    elif selected_model == 'rf_met_plasm_flav':
-        with open('models/rf_met_plasmFlav.pkl', 'rb') as f:
-            model = pickle.load(f)
-    elif selected_model == 'mlp_full_urine_ant':
-        with open('models/mlp_full_urineAnt.pkl', 'rb') as f:
-            model = pickle.load(f)
-    elif selected_model == 'mlp_met_urine_ant':
-        with open('models/mlp_met_urineAnt.pkl', 'rb') as f:
-            model = pickle.load(f)
-    elif selected_model == 'rf_full_urine_ant':
-        with open('models/rf_full_urineAnt.pkl', 'rb') as f:
-            model = pickle.load(f)
-    elif selected_model == 'rf_met_urine_ant':
-        with open('models/rf_met_urineAnt.pkl', 'rb') as f:
-            model = pickle.load(f)                
-    elif selected_model == 'mlp_full_urine_flav':
-        with open('models/mlp_full_urineFlav.pkl', 'rb') as f:
-            model = pickle.load(f)
-    elif selected_model == 'mlp_met_urine_flav':
-        with open('models/mlp_met_urineFlav.pkl', 'rb') as f:
-            model = pickle.load(f)
-    elif selected_model == 'rf_full_urine_flav':
-        with open('models/rf_full_urineFlav.pkl', 'rb') as f:
-            model = pickle.load(f)
-    elif selected_model == 'rf_met_urine_flav':
-        with open('models/rf_met_urineFlav.pkl', 'rb') as f:
-            model = pickle.load(f)    
-    else:
-        return 'Error: Invalid model selection'
+    if request.form.get('retrain'):
+        # Retrain the model with the specified hyperparameters
+        learning_rate = float(request.form.get('learning_rate'))
+        num_epochs = int(request.form.get('num_epochs'))
+        batch_size = int(request.form.get('batch_size'))
+        model = train_model(learning_rate, num_epochs, batch_size)
+    else:    
+        if selected_model == 'mlp_full_plasm_ant':
+            with open('models/mlp_full_plasmAnt.pkl', 'rb') as f:
+                model = pickle.load(f)
+        elif selected_model == 'mlp_met_plasm_ant':
+            with open('models/mlp_met_plasmAnt.pkl', 'rb') as f:
+                model = pickle.load(f)
+        elif selected_model == 'rf_full_plasm_ant':
+            with open('models/rf_full_plasmAnt.pkl', 'rb') as f:
+                model = pickle.load(f)
+        elif selected_model == 'rf_met_plasm_ant':
+            with open('models/rf_met_plasmAnt.pkl', 'rb') as f:
+                model = pickle.load(f)
+        elif selected_model == 'mlp_full_plasm_flav':
+            with open('models/mlp_full_plasmFlav.pkl', 'rb') as f:
+                model = pickle.load(f)
+        elif selected_model == 'mlp_met_plasm_flav':
+            with open('models/mlp_met_plasmFlav.pkl', 'rb') as f:
+                model = pickle.load(f)
+        elif selected_model == 'rf_full_plasm_flav':
+            with open('models/rf_full_plasmFlav.pkl', 'rb') as f:
+                model = pickle.load(f)
+        elif selected_model == 'rf_met_plasm_flav':
+            with open('models/rf_met_plasmFlav.pkl', 'rb') as f:
+                model = pickle.load(f)
+        elif selected_model == 'mlp_full_urine_ant':
+            with open('models/mlp_full_urineAnt.pkl', 'rb') as f:
+                model = pickle.load(f)
+        elif selected_model == 'mlp_met_urine_ant':
+            with open('models/mlp_met_urineAnt.pkl', 'rb') as f:
+                model = pickle.load(f)
+        elif selected_model == 'rf_full_urine_ant':
+            with open('models/rf_full_urineAnt.pkl', 'rb') as f:
+                model = pickle.load(f)
+        elif selected_model == 'rf_met_urine_ant':
+            with open('models/rf_met_urineAnt.pkl', 'rb') as f:
+                model = pickle.load(f)                
+        elif selected_model == 'mlp_full_urine_flav':
+            with open('models/mlp_full_urineFlav.pkl', 'rb') as f:
+                model = pickle.load(f)
+        elif selected_model == 'mlp_met_urine_flav':
+            with open('models/mlp_met_urineFlav.pkl', 'rb') as f:
+                model = pickle.load(f)
+        elif selected_model == 'rf_full_urine_flav':
+            with open('models/rf_full_urineFlav.pkl', 'rb') as f:
+                model = pickle.load(f)
+        elif selected_model == 'rf_met_urine_flav':
+            with open('models/rf_met_urineFlav.pkl', 'rb') as f:
+                model = pickle.load(f)    
+        else:
+            return 'Error: Invalid model selection'
 
     # Make predictions
-    df = pd.read_csv(file)
+    
+    if request.form.get('retrain'):
+        # Retrain the model with the specified hyperparameters
+        learning_rate = float(request.form.get('learning_rate'))
+        num_epochs = int(request.form.get('num_epochs'))
+        batch_size = int(request.form.get('batch_size'))
+        model = train_model(learning_rate, num_epochs, batch_size)
+    else: 
+        df = pd.read_csv(file)
+    
     predictions = model.predict(df)
-
+    
     # Create a new CSV file with predictions
     output = io.StringIO()
     writer = csv.writer(output)
@@ -89,6 +105,6 @@ def predict():
         attachment_filename='predictions.csv',
         as_attachment=True
     )
-
+    
 if __name__ == '__main__':
     app.run(debug=True)
